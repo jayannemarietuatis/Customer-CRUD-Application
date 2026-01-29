@@ -52,4 +52,15 @@ class CustomerController extends Controller
         $customer->delete();
         return response()->json(['message' => 'Deleted successfully']);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+        
+        $response = \Illuminate\Support\Facades\Http::get("http://searcher:9200/customers/_search", [
+            'q' => "*{$query}*"
+        ]);
+
+        return $response->json();
+    }
 }
