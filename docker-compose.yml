@@ -13,10 +13,10 @@ services:
   # 2. API Service (Lumen/Laravel)
   api:
     build:
-      context: ./api
+      context: ./backend  # Dati ./api, gawin nating ./backend
       dockerfile: Dockerfile
     volumes:
-      - ./api:/var/www
+      - ./backend:/var/www # Dati ./api, gawin nating ./backend
     depends_on:
       - database
       - searcher
