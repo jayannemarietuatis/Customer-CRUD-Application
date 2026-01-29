@@ -28,7 +28,7 @@ services:
       MYSQL_DATABASE: crm_db
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3306:3306"
+      - "3307:3306"
 
   # 4. Searcher Service (Elasticsearch)
   searcher:
