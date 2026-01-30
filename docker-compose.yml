@@ -13,17 +13,20 @@ services:
   # 2. API Service (Lumen/Laravel)
   api:
     build:
-      context: ./backend  # Dati ./api, gawin nating ./backend
+      context: ./backend
       dockerfile: Dockerfile
+    # Idinagdag natin ito para diretso na tayo sa port 8000
+    ports:
+      - "8000:8000"
     volumes:
-      - ./backend:/var/www # Dati ./api, gawin nating ./backend
+      - ./backend:/var/www
     depends_on:
       - database
       - searcher
 
   # 3. Database Service (Relational)
   database:
-    image: mysql:8.0 # Pwedeng PostgreSQL depende sa gamit mo
+    image: mysql:8.0
     environment:
       MYSQL_DATABASE: crm_db
       MYSQL_ROOT_PASSWORD: root
