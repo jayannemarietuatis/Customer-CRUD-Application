@@ -4,9 +4,10 @@ services:
   controller:
     image: nginx:stable-alpine
     ports:
-      - "80:80"
+      - "8000:80"  
     volumes:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./backend:/var/www 
     depends_on:
       - api
 
@@ -15,9 +16,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    # Idinagdag natin ito para diretso na tayo sa port 8000
-    ports:
-      - "8000:8000"
     volumes:
       - ./backend:/var/www
     depends_on:
